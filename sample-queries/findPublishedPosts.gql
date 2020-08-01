@@ -1,0 +1,42 @@
+# Write your query or mutation here
+query findPublishedPosts {
+  publishedPosts {
+    edges {
+      node {
+        ...PostData
+        author {
+          ...UserData
+          posts {
+            ...PostData
+          }
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+    }
+    totalCount
+  }
+}
+
+fragment PostData on Post {
+  id
+  createdAt
+  updatedAt
+  title
+  content
+  published
+}
+
+fragment UserData on User {
+  id
+  createdAt
+  updatedAt
+  email
+  firstname
+  lastname
+  role
+}
