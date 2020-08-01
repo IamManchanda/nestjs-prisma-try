@@ -1,6 +1,6 @@
 # Write your query or mutation here
 query findPublishedPosts {
-  publishedPosts {
+  publishedPosts(first: 20, orderBy: { field: title, direction: desc }) {
     edges {
       node {
         ...PostData
